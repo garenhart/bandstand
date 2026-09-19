@@ -42,13 +42,13 @@ If you use Processing, also install the `oscP5` and `controlP5` libraries via
 ## 2. Get the code
 
 ```bash
-git clone https://github.com/garenhart/sonic-stage
-git clone https://github.com/garenhart/sonic-stage-visualizer   # optional, for visuals
+git clone https://github.com/garenhart/bandstand
+git clone https://github.com/garenhart/bandstand-visualizer   # optional, for visuals
 ```
 
 ```
-sonic-stage/
-├── sonic-stage.rb           # ← load THIS in Sonic Pi (wrapper, prevents buffer overflow)
+bandstand/
+├── bandstand.rb           # ← load THIS in Sonic Pi (wrapper, prevents buffer overflow)
 ├── osc_monitor.rb           # main engine (loaded by the wrapper)
 ├── osc_controller.json      # Open Stage Control layout
 ├── osc_controller.js        # Open Stage Control custom module
@@ -71,10 +71,10 @@ Edit Sonic Pi's init file — create it if missing:
 Add one line with the **absolute** path to your clone (note the trailing slash):
 
 ```ruby
-set :ss_path, "/Users/username/dev/sonic-stage/"
+set :ss_path, "/Users/username/dev/bandstand/"
 ```
 
-> ✅ `/Users/username/dev/sonic-stage/`  &nbsp;&nbsp; ❌ `~/dev/sonic-stage/` — `~` is not expanded.
+> ✅ `/Users/username/dev/bandstand/`  &nbsp;&nbsp; ❌ `~/dev/bandstand/` — `~` is not expanded.
 
 Save and **restart Sonic Pi**.
 
@@ -86,15 +86,15 @@ Launch Open Stage Control and fill in these fields (paths point into your clone)
 |-------|-------|
 | **send** | `127.0.0.1:4560` |
 | **osc-port** | `7777` |
-| **load** | `…/sonic-stage/osc_controller.json` |
-| **custom-module** | `…/sonic-stage/osc_controller.js` |
-| **theme** | `…/sonic-stage/osc_controller_theme.css` |
+| **load** | `…/bandstand/osc_controller.json` |
+| **custom-module** | `…/bandstand/osc_controller.js` |
+| **theme** | `…/bandstand/osc_controller_theme.css` |
 
-<img src="readme/open-stage-control-interface.png" alt="Open Stage Control settings: send=127.0.0.1:4560, osc-port=7777, load/custom-module/theme pointing at the sonic-stage folder" width="640">
+<img src="readme/open-stage-control-interface.png" alt="Open Stage Control settings: send=127.0.0.1:4560, osc-port=7777, load/custom-module/theme pointing at the bandstand folder" width="640">
 
 ### c. Configure Processing (optional)
 
-Open a sketch from `sonic-stage-visualizer` (e.g. `keyboard_and_drums/keyboard_and_drums.pde`).
+Open a sketch from `bandstand-visualizer` (e.g. `keyboard_and_drums/keyboard_and_drums.pde`).
 It listens on port `8000` by default — change `new OscP5(this, 8000)` only if you also change
 `:anim_port` in `osc_monitor.rb`.
 
@@ -104,7 +104,7 @@ Start the components **in this order**:
 
 1. **Open Stage Control** — press ▶ (top-left). The launcher prints `Server started…` and a client window opens.
 2. **Processing** *(optional)* — open a visualizer sketch and click **Run**.
-3. **Sonic Pi** — open `sonic-stage.rb`, press **Run**.
+3. **Sonic Pi** — open `bandstand.rb`, press **Run**.
 
 On Run, Sonic Pi loads `config/_default.json`, populates the UI dropdowns, and starts the live
 loops. Adjust anything in the Open Stage Control UI and you'll hear it change in real time.
@@ -117,10 +117,10 @@ loops. Adjust anything in the Open Stage Control UI and you'll hear it change in
 |---------|-----|
 | `undefined ... ss_path` / nothing loads | `:ss_path` missing or has `~`. Use a full absolute path with trailing `/`, then restart Sonic Pi. |
 | UI shows but no sound / no response | Check **send** = `127.0.0.1:4560` and **osc-port** = `7777`. Confirm Open Stage Control is running *before* you press Run in Sonic Pi. |
-| Empty / blank dropdowns | Re-run `sonic-stage.rb` (init runs twice on purpose to fill them). |
+| Empty / blank dropdowns | Re-run `bandstand.rb` (init runs twice on purpose to fill them). |
 | No visuals | Verify `oscP5` + `controlP5` are installed and the sketch's port matches `:anim_port` (8000). |
 | Port already in use | Make sure nothing else holds `7777` or `8000`. |
-| Loaded `osc_monitor.rb` directly and it errored | Always load **`sonic-stage.rb`** — the wrapper avoids a buffer overflow. |
+| Loaded `osc_monitor.rb` directly and it errored | Always load **`bandstand.rb`** — the wrapper avoids a buffer overflow. |
 
 ## License
 

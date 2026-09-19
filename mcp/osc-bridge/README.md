@@ -23,7 +23,7 @@ controller code path, changes mutate the live `cfg` your loops use.
 
 Only one process can own port 7777. **Close Open Stage Control** before using the
 bridge — they cannot both bind 7777. Sonic Pi itself stays running (load
-`sonic-stage.rb` as usual). If you want to drive the system *alongside* a live UI
+`bandstand.rb` as usual). If you want to drive the system *alongside* a live UI
 instead, that needs a small second-listener change in `osc_monitor.rb` — not done
 here.
 
@@ -48,8 +48,8 @@ Stage Control is still running.
 
 Override via env vars (set in [`.mcp.json`](../../.mcp.json)):
 
-- `SS_SEND_HOST` / `SS_SEND_PORT` — Sonic Pi (default `127.0.0.1` / `4560`)
-- `SS_BIND_HOST` / `SS_BIND_PORT` — local bind = controller port to spoof (default `127.0.0.1` / `7777`)
+- `BAND_SEND_HOST` / `BAND_SEND_PORT` — Sonic Pi (default `127.0.0.1` / `4560`)
+- `BAND_BIND_HOST` / `BAND_BIND_PORT` — local bind = controller port to spoof (default `127.0.0.1` / `7777`)
 
 ## Manual smoke test (no MCP client)
 

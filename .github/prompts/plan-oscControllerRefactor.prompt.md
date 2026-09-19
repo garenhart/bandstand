@@ -49,7 +49,7 @@ The file is ~12,280 lines — far larger than it needs to be. Every widget decla
 **Step 8.** Open `osc_controller.clean.json` in Open Stage Control and verify:
 - All sections render identically (bass, chord, drums, keys panels)
 - All fx option panels (opt1/opt2) work — range sliders, name buttons, onValue callbacks
-- OSC round-trip works with Sonic Pi (`sonic-stage.rb` running)
+- OSC round-trip works with Sonic Pi (`bandstand.rb` running)
 
 **Step 9.** If validation passes, replace `osc_controller.json` with the cleaned version (keep a backup).
 
@@ -64,7 +64,7 @@ The file is ~12,280 lines — far larger than it needs to be. Every widget decla
 ## Verification Checklist
 1. Line count: expect 40–60% reduction (target ~5,000–7,500 lines)
 2. Visual parity in Open Stage Control
-3. OSC end-to-end with `sonic-stage.rb`
+3. OSC end-to-end with `bandstand.rb`
 4. FX opt panels + auto/update toggle behavior unchanged
 
 ## Decisions & Scope

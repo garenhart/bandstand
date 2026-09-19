@@ -8,7 +8,7 @@ Bandstand is a real-time music performance system integrating three components v
 
 ## Critical Setup Requirements
 - **Required**: Set `:ss_path` variable in Sonic Pi's `~/.sonic-pi/config/init.rb` with absolute path (no `~`)
-- **Entry Point**: Always run `sonic-stage.rb` (wrapper) not `osc_monitor.rb` directly to prevent buffer overflow
+- **Entry Point**: Always run `bandstand.rb` (wrapper) not `osc_monitor.rb` directly to prevent buffer overflow
 - **Port Configuration**: OSC ports are hardcoded in `osc_monitor.rb` - ctrl_port: 7777, anim_port: 8000
 
 ## Configuration System
@@ -92,8 +92,8 @@ init_osc_controls cfg, true  # Second param reinitializes
 - **UI Sync**: `init_osc_controls()` populates UI with available synths/samples/effects
 - **Visual Sync**: Animation cues sent via OSC to Processing on port 8000
 
-## Visualizer Integration (sonic-stage-visualizer)
-The companion repo `sonic-stage-visualizer` (sibling directory `../sonic-stage-visualizer/`) contains Processing sketches that receive OSC from Sonic Pi on port **8000**.
+## Visualizer Integration (bandstand-visualizer)
+The companion repo `bandstand-visualizer` (sibling directory `../bandstand-visualizer/`) contains Processing sketches that receive OSC from Sonic Pi on port **8000**.
 
 ### OSC Message Contract (Sonic Pi → Processing)
 Sent via `lib-osc-animation.rb` using `osc_anim` (wraps `osc_send` to `:anim_ip`/`:anim_port`):
@@ -117,5 +117,5 @@ Both sketches listen on port 8000 via `oscP5 = new OscP5(this, 8000)` and handle
 ## Performance Considerations
 - Real-time audio requires minimal function call overhead in live loops
 - Configuration changes update global state without restarting loops
-- Buffer management handled by `sonic-stage.rb` wrapper pattern
+- Buffer management handled by `bandstand.rb` wrapper pattern
 - Effects processing can impact latency - order matters in `fx_chain`

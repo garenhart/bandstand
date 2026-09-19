@@ -3,7 +3,7 @@ config/try_*.json
 unit-test.rb
 config/unit-test.json
 
-sonic-stage.code-workspace
+bandstand.code-workspace
 .DS_Store
 .mcp.json
 

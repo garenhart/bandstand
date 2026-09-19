@@ -13,10 +13,10 @@ Bandstand is a real-time music performance system integrating three components v
 
 **Prerequisite**: Set `:ss_path` in `~/.sonic-pi/config/init.rb` with an absolute path (no `~`):
 ```ruby
-set :ss_path, "/Users/username/dev/sonic-stage/"
+set :ss_path, "/Users/username/dev/bandstand/"
 ```
 
-**Entry point**: Load `sonic-stage.rb` in Sonic Pi — never `osc_monitor.rb` directly. The wrapper exists to prevent buffer overflow.
+**Entry point**: Load `bandstand.rb` in Sonic Pi — never `osc_monitor.rb` directly. The wrapper exists to prevent buffer overflow.
 
 **Open Stage Control setup**: osc-port `7777`, load `osc_controller.json`, custom-module `osc_controller.js`, theme `osc_controller_theme.css`, send to `127.0.0.1:4560`.
 

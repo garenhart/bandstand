@@ -17,10 +17,10 @@ install, no Node. MCP stdio framing is newline-delimited JSON-RPC 2.0. OSC 1.0
 encoding/decoding is implemented inline.
 
 Config via env vars:
-  SS_SEND_HOST (default 127.0.0.1)  Sonic Pi host
-  SS_SEND_PORT (default 4560)       Sonic Pi OSC listen port
-  SS_BIND_HOST (default 127.0.0.1)  local bind host
-  SS_BIND_PORT (default 7777)       local bind port = controller port to spoof
+  BAND_SEND_HOST (default 127.0.0.1)  Sonic Pi host
+  BAND_SEND_PORT (default 4560)       Sonic Pi OSC listen port
+  BAND_BIND_HOST (default 127.0.0.1)  local bind host
+  BAND_BIND_PORT (default 7777)       local bind port = controller port to spoof
 """
 
 import json
@@ -35,10 +35,10 @@ from collections import deque
 # ----------------------------------------------------------------------------
 # Config
 # ----------------------------------------------------------------------------
-SEND_HOST = os.environ.get("SS_SEND_HOST", "127.0.0.1")
-SEND_PORT = int(os.environ.get("SS_SEND_PORT", "4560"))
-BIND_HOST = os.environ.get("SS_BIND_HOST", "127.0.0.1")
-BIND_PORT = int(os.environ.get("SS_BIND_PORT", "7777"))
+SEND_HOST = os.environ.get("BAND_SEND_HOST", "127.0.0.1")
+SEND_PORT = int(os.environ.get("BAND_SEND_PORT", "4560"))
+BIND_HOST = os.environ.get("BAND_BIND_HOST", "127.0.0.1")
+BIND_PORT = int(os.environ.get("BAND_BIND_PORT", "7777"))
 
 PROTOCOL_VERSION_DEFAULT = "2025-06-18"
 SERVER_NAME = "bandstand-osc-bridge"
@@ -184,7 +184,7 @@ class OscTransport:
         if self.sock is None:
             raise RuntimeError(
                 "OSC socket not bound (%s). Bridge needs port %d free — close "
-                "Open Stage Control or set SS_BIND_PORT." % (self.bind_error, BIND_PORT))
+                "Open Stage Control or set BAND_BIND_PORT." % (self.bind_error, BIND_PORT))
         self.sock.sendto(osc_encode(address, args), (SEND_HOST, SEND_PORT))
         self.sent_count += 1
 

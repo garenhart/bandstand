@@ -12,7 +12,7 @@ Bandstand has three components communicating via OSC:
 - **Open Stage Control** (UI) — Port 7777, sends/receives OSC to control instruments
 - **Processing** (visuals, optional) — Port 8000, receives animation cues
 
-**Entry point**: Always run `sonic-stage.rb` (wrapper), never `osc_monitor.rb` directly.
+**Entry point**: Always run `bandstand.rb` (wrapper), never `osc_monitor.rb` directly.
 **Config**: Set `:ss_path` in `~/.sonic-pi/config/init.rb` with absolute path (no `~`).
 
 ## Library Load Order (dependency order in osc_monitor.rb)
